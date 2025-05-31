@@ -1,12 +1,13 @@
-var gulp        = require('gulp');
-var runSequence = require('run-sequence');
-var config      = require('../config');
+const gulp = require('gulp');
+const config = require('../config');
 
-gulp.task('default', function(cb) {
-    runSequence(
+function defaultTask() {
+    return gulp.series(
         'build:dev',
-        'watch',
-        'server',
-        cb
-    );
-});
+        gulp.parallel('watch', 'server')
+    )();
+}
+
+gulp.task('default', defaultTask);
+
+module.exports = { defaultTask };

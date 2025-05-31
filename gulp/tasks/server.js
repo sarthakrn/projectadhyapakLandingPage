@@ -1,12 +1,21 @@
-var gulp   = require('gulp');
-var server = require('browser-sync').create();
-var util   = require('gulp-util');
-var config = require('../config');
+const gulp = require('gulp');
+const server = require('browser-sync').create();
+const config = require('../config');
 
-// in CL 'gulp server --open' to open current project in browser
-// in CL 'gulp server --tunnel siteName' to make project available over http://siteName.localtunnel.me
+// Parse command line arguments
+function getCliArgument(name, defaultValue = null) {
+    const index = process.argv.findIndex(arg => arg === `--${name}`);
+    if (index !== -1 && process.argv[index + 1]) {
+        return process.argv[index + 1];
+    }
+    return defaultValue;
+}
 
-gulp.task('server', function() {
+function hasCliFlag(name) {
+    return process.argv.includes(`--${name}`);
+}
+
+function serverTask() {
     server.init({
         server: {
             baseDir: !config.production ? [config.dest.root, config.src.root] : config.dest.root,
@@ -16,20 +25,22 @@ gulp.task('server', function() {
             }
         },
         files: [
-            config.dest.html + '/*.html',
-            config.dest.css + '/*.css',
-            config.dest.img + '/**/*'
+            `${config.dest.html}/*.html`,
+            `${config.dest.css}/*.css`,
+            `${config.dest.img}/**/*`
         ],
-        port: util.env.port || 3000,
+        port: getCliArgument('port', 3000),
         logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
         logConnections: false,
         logFileChanges: true,
-        open: true,
+        open: hasCliFlag('open'),
         notify: false,
         ghostMode: false,
         online: true,
-        tunnel: util.env.tunnel || null
+        tunnel: getCliArgument('tunnel', null)
     });
-});
+}
 
-module.exports = server;
+gulp.task('server', serverTask);
+
+module.exports = { serverTask, server };

@@ -28,24 +28,33 @@
     <meta property="og:site_name" content="Collab">
     <meta property="fb:admins" content="132951670226590">
     <link rel="stylesheet" media="all" href="css/app.css">
-    <script>var viewportmeta = document.querySelector('meta[name="viewport"]');
-if (viewportmeta) {
-  if (screen.width < 375) {
-    var newScale = screen.width / 375;
-    viewportmeta.content = 'width=375, minimum-scale=' + newScale + ', maximum-scale=1.0, user-scalable=no, initial-scale=' + newScale + '';
-  } else {
-    viewportmeta.content = 'width=device-width, maximum-scale=1.0, initial-scale=1.0';
-  }
-}</script>
+    <script>
+      var viewportmeta = document.querySelector('meta[name="viewport"]');
+      if (viewportmeta)
+      {
+        if (screen.width < 375)
+        {
+          var newScale = screen.width / 375;
+          viewportmeta.content = 'width=375, minimum-scale=' + newScale + ', maximum-scale=1.0, user-scalable=no, initial-scale=' + newScale + '';
+        }
+        else
+        {
+          viewportmeta.content = 'width=device-width, maximum-scale=1.0, initial-scale=1.0';
+        }
+      }
+
+    </script>
   </head>
   <body>
     <div class="page">
       <div class="main">
         <div class="header js-header" id="header">
-          <div class="header__center center"><button class="header__burger js-header-burger"><span></span></button><a class="header__logo" href="#"><img class="header__pic" src="img/logo.svg" alt=""></a>
+          <div class="header__center center">
+            <button class="header__burger js-header-burger"><span></span></button><a class="header__logo" href="#"><img class="header__pic" src="img/logo.svg" alt=""></a>
             <div class="header__wrap js-header-wrap">
               <nav class="header__nav"><a class="header__item" href="#">Features</a><a class="header__item" href="#">Pricing</a><a class="header__item" href="#">Tours</a>
-                <div class="header__item js-header-item"><a class="header__head js-header-head" href="#">Explore<svg class="icon icon-arrow-down">
+                <div class="header__item js-header-item"><a class="header__head js-header-head" href="#">Explore
+                    <svg class="icon icon-arrow-down">
                       <use xlink:href="img/sprite.svg#icon-arrow-down"></use>
                     </svg></a>
                   <div class="header__body js-header-body">
@@ -112,10 +121,15 @@ if (viewportmeta) {
               </nav>
               <div class="header__photo"><img class="header__pic" src="img/menu-pic.png" alt=""></div>
             </div>
-            <div class="header__search js-header-search"><button class="header__open js-header-open"><svg class="icon icon-search">
+            <div class="header__search js-header-search">
+              <button class="header__open js-header-open">
+                <svg class="icon icon-search">
                   <use xlink:href="img/sprite.svg#icon-search"></use>
-                </svg></button>
-              <div class="header__field"><input class="header__input" type="text" placeholder="Search ..."></div>
+                </svg>
+              </button>
+              <div class="header__field">
+                <input class="header__input" type="text" placeholder="Search ...">
+              </div>
             </div><a class="header__btn btn btn_pink" href="login.html">Get Started</a>
           </div>
           <div class="header__bg js-header-bg"></div>
@@ -215,9 +229,11 @@ if (viewportmeta) {
           <div class="access__wrap" data-aos="animation-scale-y">
             <div class="access__info">Ready to get started?  <br>Sign up with your email</div>
             <form class="access__form">
-              <div class="access__field"><input class="access__input" type="email" placeholder="Email address">
+              <div class="access__field">
+                <input class="access__input" type="email" placeholder="Email address">
                 <div class="access__icon"><img class="access__pic" src="img/sending-mail.svg" alt=""></div>
-              </div><button class="access__btn btn btn_purple" type="submit">Get Started</button>
+              </div>
+              <button class="access__btn btn btn_purple" type="submit">Get Started</button>
             </form>
           </div>
         </div>
@@ -281,7 +297,9 @@ if (viewportmeta) {
                 <p>With Collab Smart Prototype you create your interactions and animations once and store as presets in the cloud for future use.  </p>
                 <p>Use the Collab App to test in real-time.</p>
               </div>
-              <div class="like__btn" data-aos="animation-scale-x" data-aos-delay="300"><button class="btn btn_purple">See Sample Prototype</button></div>
+              <div class="like__btn" data-aos="animation-scale-x" data-aos-delay="300">
+                <button class="btn btn_purple">See Sample Prototype</button>
+              </div>
             </div>
             <div class="like__preview" data-aos><img class="like__pic" src="img/hand-1.png" alt=""></div>
             <div class="like__circle"></div>
@@ -300,18 +318,25 @@ if (viewportmeta) {
           <div class="plan__head" data-aos="animation-scale-y">
             <div class="plan__stage stage">Join The Revolution</div>
             <h2 class="plan__title title">Find the <span class="title__color">Right Plan.</span></h2>
-            <div class="plan__info info">Flexible pricing options for freelancers and design teams.</div><label class="switch"><input class="switch__input" type="checkbox" checked><span class="switch__flex"><span class="switch__yearly">Billed Yearly</span><span class="switch__box"></span><span class="switch__monthly">Billed Monthly</span></span></label>
-            <div class="plan__variants"><select class="plan__select js-plan-select">
+            <div class="plan__info info">Flexible pricing options for freelancers and design teams.</div>
+            <label class="switch">
+              <input class="switch__input" type="checkbox" checked><span class="switch__flex"><span class="switch__yearly">Billed Yearly</span><span class="switch__box"></span><span class="switch__monthly">Billed Monthly</span></span>
+            </label>
+            <div class="plan__variants">
+              <select class="plan__select js-plan-select">
                 <option>Professional</option>
                 <option>Standard</option>
                 <option>Ultimate</option>
-              </select></div>
+              </select>
+            </div>
           </div>
           <div class="plan__body">
             <div class="plan__item js-plan-item" data-aos="animation-translate-y">
-              <div class="plan__star"><svg class="icon icon-star">
+              <div class="plan__star">
+                <svg class="icon icon-star">
                   <use xlink:href="img/sprite.svg#icon-star"></use>
-                </svg></div>
+                </svg>
+              </div>
               <div class="plan__category">
                 <div class="plan__icon"><img class="plan__pic" src="img/smile-1.svg" alt=""></div>
                 <div class="plan__text">Individual</div>
@@ -492,11 +517,18 @@ if (viewportmeta) {
                           <div class="package__text">Stunning interface</div>
                         </a></div>
                       <div class="package__btns">
-                        <div class="package__arrows"><button class="package__arrow js-package-prev"><svg class="icon icon-arrow-prev">
+                        <div class="package__arrows">
+                          <button class="package__arrow js-package-prev">
+                            <svg class="icon icon-arrow-prev">
                               <use xlink:href="img/sprite.svg#icon-arrow-prev"></use>
-                            </svg></button><button class="package__arrow js-package-next"><svg class="icon icon-arrow-next">
+                            </svg>
+                          </button>
+                          <button class="package__arrow js-package-next">
+                            <svg class="icon icon-arrow-next">
                               <use xlink:href="img/sprite.svg#icon-arrow-next"></use>
-                            </svg></button></div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
+                            </svg>
+                          </button>
+                        </div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
                       </div>
                     </div>
                     <div class="package__preview"><img class="package__pic" src="img/laptop.png" alt=""></div>
@@ -519,11 +551,18 @@ if (viewportmeta) {
                           <div class="package__text">Stunning interface</div>
                         </a></div>
                       <div class="package__btns">
-                        <div class="package__arrows"><button class="package__arrow js-package-prev"><svg class="icon icon-arrow-prev">
+                        <div class="package__arrows">
+                          <button class="package__arrow js-package-prev">
+                            <svg class="icon icon-arrow-prev">
                               <use xlink:href="img/sprite.svg#icon-arrow-prev"></use>
-                            </svg></button><button class="package__arrow js-package-next"><svg class="icon icon-arrow-next">
+                            </svg>
+                          </button>
+                          <button class="package__arrow js-package-next">
+                            <svg class="icon icon-arrow-next">
                               <use xlink:href="img/sprite.svg#icon-arrow-next"></use>
-                            </svg></button></div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
+                            </svg>
+                          </button>
+                        </div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
                       </div>
                     </div>
                     <div class="package__preview"><img class="package__pic" src="img/laptop.png" alt=""></div>
@@ -546,11 +585,18 @@ if (viewportmeta) {
                           <div class="package__text">Stunning interface</div>
                         </a></div>
                       <div class="package__btns">
-                        <div class="package__arrows"><button class="package__arrow js-package-prev"><svg class="icon icon-arrow-prev">
+                        <div class="package__arrows">
+                          <button class="package__arrow js-package-prev">
+                            <svg class="icon icon-arrow-prev">
                               <use xlink:href="img/sprite.svg#icon-arrow-prev"></use>
-                            </svg></button><button class="package__arrow js-package-next"><svg class="icon icon-arrow-next">
+                            </svg>
+                          </button>
+                          <button class="package__arrow js-package-next">
+                            <svg class="icon icon-arrow-next">
                               <use xlink:href="img/sprite.svg#icon-arrow-next"></use>
-                            </svg></button></div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
+                            </svg>
+                          </button>
+                        </div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
                       </div>
                     </div>
                     <div class="package__preview"><img class="package__pic" src="img/laptop.png" alt=""></div>
@@ -573,11 +619,18 @@ if (viewportmeta) {
                           <div class="package__text">Stunning interface</div>
                         </a></div>
                       <div class="package__btns">
-                        <div class="package__arrows"><button class="package__arrow js-package-prev"><svg class="icon icon-arrow-prev">
+                        <div class="package__arrows">
+                          <button class="package__arrow js-package-prev">
+                            <svg class="icon icon-arrow-prev">
                               <use xlink:href="img/sprite.svg#icon-arrow-prev"></use>
-                            </svg></button><button class="package__arrow js-package-next"><svg class="icon icon-arrow-next">
+                            </svg>
+                          </button>
+                          <button class="package__arrow js-package-next">
+                            <svg class="icon icon-arrow-next">
                               <use xlink:href="img/sprite.svg#icon-arrow-next"></use>
-                            </svg></button></div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
+                            </svg>
+                          </button>
+                        </div><a class="package__btn btn btn_purple" href="login.html">Get Started</a>
                       </div>
                     </div>
                     <div class="package__preview"><img class="package__pic" src="img/laptop.png" alt=""></div>
@@ -640,7 +693,8 @@ if (viewportmeta) {
                   <div class="design__details">
                     <div class="design__category">Design</div>
                     <div class="design__info">Automation Color Picker</div>
-                    <div class="design__text">Use the smart color picker to easily select and apply colors.</div><a class="design__link" href="login.html">Get started<svg class="icon icon-arrow-right">
+                    <div class="design__text">Use the smart color picker to easily select and apply colors.</div><a class="design__link" href="login.html">Get started
+                      <svg class="icon icon-arrow-right">
                         <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                       </svg></a>
                   </div>
@@ -652,7 +706,8 @@ if (viewportmeta) {
                   <div class="design__details">
                     <div class="design__category">Build</div>
                     <div class="design__info">Component Builder Guide</div>
-                    <div class="design__text">Using the Component Builder with your projects.</div><a class="design__link" href="login.html">Get started<svg class="icon icon-arrow-right">
+                    <div class="design__text">Using the Component Builder with your projects.</div><a class="design__link" href="login.html">Get started
+                      <svg class="icon icon-arrow-right">
                         <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                       </svg></a>
                   </div>
@@ -664,7 +719,8 @@ if (viewportmeta) {
                   <div class="design__details">
                     <div class="design__category">Ship</div>
                     <div class="design__info">Cross-platform Deployment</div>
-                    <div class="design__text">Deploy your projects more efficiently for web &amp; mobile.</div><a class="design__link" href="login.html">Get started<svg class="icon icon-arrow-right">
+                    <div class="design__text">Deploy your projects more efficiently for web &amp; mobile.</div><a class="design__link" href="login.html">Get started
+                      <svg class="icon icon-arrow-right">
                         <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                       </svg></a>
                   </div>
@@ -676,7 +732,8 @@ if (viewportmeta) {
                   <div class="design__details">
                     <div class="design__category">Design</div>
                     <div class="design__info">Automation Color Picker</div>
-                    <div class="design__text">Use the smart color picker to easily select and apply colors.</div><a class="design__link" href="login.html">Get started<svg class="icon icon-arrow-right">
+                    <div class="design__text">Use the smart color picker to easily select and apply colors.</div><a class="design__link" href="login.html">Get started
+                      <svg class="icon icon-arrow-right">
                         <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                       </svg></a>
                   </div>
@@ -688,7 +745,8 @@ if (viewportmeta) {
                   <div class="design__details">
                     <div class="design__category">Build</div>
                     <div class="design__info">Component Builder Guide</div>
-                    <div class="design__text">Using the Component Builder with your projects.</div><a class="design__link" href="login.html">Get started<svg class="icon icon-arrow-right">
+                    <div class="design__text">Using the Component Builder with your projects.</div><a class="design__link" href="login.html">Get started
+                      <svg class="icon icon-arrow-right">
                         <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                       </svg></a>
                   </div>
@@ -710,22 +768,30 @@ if (viewportmeta) {
                 <div class="details__slide">
                   <div class="details__counter"><span class="details__number">16</span> m</div>
                   <div class="details__text">It’s easy to share designs across the organization, so collaboration is easy.</div>
-                  <div class="details__control"><button class="details__play">Play</button><a class="details__link" href="#">Find out more</a></div>
+                  <div class="details__control">
+                    <button class="details__play">Play</button><a class="details__link" href="#">Find out more</a>
+                  </div>
                 </div>
                 <div class="details__slide">
                   <div class="details__counter"><span class="details__number">16</span> m</div>
                   <div class="details__text">It’s easy to share designs across the organization, so collaboration is easy.</div>
-                  <div class="details__control"><button class="details__play">Play</button><a class="details__link" href="#">Find out more</a></div>
+                  <div class="details__control">
+                    <button class="details__play">Play</button><a class="details__link" href="#">Find out more</a>
+                  </div>
                 </div>
                 <div class="details__slide">
                   <div class="details__counter"><span class="details__number">16</span> m</div>
                   <div class="details__text">It’s easy to share designs across the organization, so collaboration is easy.</div>
-                  <div class="details__control"><button class="details__play">Play</button><a class="details__link" href="#">Find out more</a></div>
+                  <div class="details__control">
+                    <button class="details__play">Play</button><a class="details__link" href="#">Find out more</a>
+                  </div>
                 </div>
                 <div class="details__slide">
                   <div class="details__counter"><span class="details__number">16</span> m</div>
                   <div class="details__text">It’s easy to share designs across the organization, so collaboration is easy.</div>
-                  <div class="details__control"><button class="details__play">Play</button><a class="details__link" href="#">Find out more</a></div>
+                  <div class="details__control">
+                    <button class="details__play">Play</button><a class="details__link" href="#">Find out more</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -763,7 +829,8 @@ if (viewportmeta) {
             <div class="roadmap__wrap" data-aos="animation-scale-y">
               <div class="roadmap__stage stage">Roadmap</div>
               <h2 class="roadmap__title title">All systems are a go<span class="title__color">.</span></h2>
-              <div class="roadmap__info">Find out where we are on the path to achieving the ultimate design tool.</div><select class="roadmap__select">
+              <div class="roadmap__info">Find out where we are on the path to achieving the ultimate design tool.</div>
+              <select class="roadmap__select">
                 <option>Current</option>
                 <option>Current</option>
                 <option>Current</option>
@@ -950,7 +1017,8 @@ if (viewportmeta) {
               <div class="quality__icon"><img class="quality__pic" src="img/camera-big.png" alt=""></div>
               <div class="quality__details">
                 <div class="quality__category">Assets Library</div>
-                <div class="quality__text">Get access to huge library of ready-made components and illustrations, free to use on all your projects.</div><a class="quality__link" href="#">Learn more<svg class="icon icon-arrow-right">
+                <div class="quality__text">Get access to huge library of ready-made components and illustrations, free to use on all your projects.</div><a class="quality__link" href="#">Learn more
+                  <svg class="icon icon-arrow-right">
                     <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                   </svg></a>
               </div>
@@ -961,7 +1029,8 @@ if (viewportmeta) {
               <div class="quality__icon"><img class="quality__pic" src="img/clock-big.png" alt=""></div>
               <div class="quality__details">
                 <div class="quality__category">Save Time</div>
-                <div class="quality__text">Save tons of time by eliminating repetitive day-to-day tasks and slow load times. </div><a class="quality__link" href="#">Learn more<svg class="icon icon-arrow-right">
+                <div class="quality__text">Save tons of time by eliminating repetitive day-to-day tasks and slow load times. </div><a class="quality__link" href="#">Learn more
+                  <svg class="icon icon-arrow-right">
                     <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                   </svg></a>
               </div>
@@ -972,7 +1041,8 @@ if (viewportmeta) {
               <div class="quality__icon"><img class="quality__pic" src="img/cup-big.png" alt=""></div>
               <div class="quality__details">
                 <div class="quality__category">Relax</div>
-                <div class="quality__text">Let your personalized Collab assistant do the heavy lifting while you focus on creating. Say good bye to code 👋</div><a class="quality__link" href="#">Learn more<svg class="icon icon-arrow-right">
+                <div class="quality__text">Let your personalized Collab assistant do the heavy lifting while you focus on creating. Say good bye to code 👋</div><a class="quality__link" href="#">Learn more
+                  <svg class="icon icon-arrow-right">
                     <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                   </svg></a>
               </div>
@@ -983,7 +1053,8 @@ if (viewportmeta) {
               <div class="quality__icon"><img class="quality__pic" src="img/chatbox-big.png" alt=""></div>
               <div class="quality__details">
                 <div class="quality__category">Support</div>
-                <div class="quality__text">Got stuck or need any help? Our support team is online 24/7 to help assist you with any issues.</div><a class="quality__link" href="#">Learn more<svg class="icon icon-arrow-right">
+                <div class="quality__text">Got stuck or need any help? Our support team is online 24/7 to help assist you with any issues.</div><a class="quality__link" href="#">Learn more
+                  <svg class="icon icon-arrow-right">
                     <use xlink:href="img/sprite.svg#icon-arrow-right"></use>
                   </svg></a>
               </div>
@@ -1003,7 +1074,9 @@ if (viewportmeta) {
               <h2 class="showcase__title title">Created with  Collab<span class="title__color">.</span></h2>
             </div>
             <div class="showcase__info info" data-aos="animation-scale-y" data-aos-delay="150">See what designers around the world are building with Collab.</div>
-            <div class="showcase__btn" data-aos="animation-scale-y" data-aos-delay="300"><button class="btn btn_purple">View More Projects</button></div>
+            <div class="showcase__btn" data-aos="animation-scale-y" data-aos-delay="300">
+              <button class="btn btn_purple">View More Projects</button>
+            </div>
           </div>
         </div>
         <div class="showcase__bg"><img class="showcase__pic" src="img/showcase-circle.svg" alt=""></div>
@@ -1044,21 +1117,27 @@ if (viewportmeta) {
           <div class="footer__row">
             <div class="footer__col"><a class="footer__logo" href="#"><img class="footer__pic" src="img/logo-dark.svg" alt=""></a></div>
             <div class="footer__col js-footer-col">
-              <div class="footer__category js-footer-category">Company<svg class="icon icon-arrow-down">
+              <div class="footer__category js-footer-category">Company
+                <svg class="icon icon-arrow-down">
                   <use xlink:href="img/sprite.svg#icon-arrow-down"></use>
-                </svg></div>
+                </svg>
+              </div>
               <div class="footer__menu js-footer-menu"><a class="footer__link" href="#">About us</a><a class="footer__link" href="#">Jobs</a><a class="footer__link" href="#">Press</a><a class="footer__link" href="#">Blog</a></div>
             </div>
             <div class="footer__col js-footer-col">
-              <div class="footer__category js-footer-category">Support<svg class="icon icon-arrow-down">
+              <div class="footer__category js-footer-category">Support
+                <svg class="icon icon-arrow-down">
                   <use xlink:href="img/sprite.svg#icon-arrow-down"></use>
-                </svg></div>
+                </svg>
+              </div>
               <div class="footer__menu js-footer-menu"><a class="footer__link" href="#">Contact us</a><a class="footer__link" href="#">Cookies</a><a class="footer__link" href="#">Privacy & terms</a><a class="footer__link" href="#">Sitemap</a></div>
             </div>
             <div class="footer__col js-footer-col">
-              <div class="footer__category js-footer-category">Community<svg class="icon icon-arrow-down">
+              <div class="footer__category js-footer-category">Community
+                <svg class="icon icon-arrow-down">
                   <use xlink:href="img/sprite.svg#icon-arrow-down"></use>
-                </svg></div>
+                </svg>
+              </div>
               <div class="footer__menu js-footer-menu"><a class="footer__link" href="#">Developers</a><a class="footer__link" href="#">Designers</a><a class="footer__link" href="#">Forum</a><a class="footer__link" href="#">UI8</a></div>
             </div>
           </div>
@@ -1080,21 +1159,25 @@ if (viewportmeta) {
               <div class="popup__field field">
                 <div class="field__label">Name</div>
                 <div class="field__wrap">
-                  <div class="field__icon"><img class="field__pic" src="img/user.svg" alt=""></div><input class="field__input" type="text" name="name" placeholder="Name">
+                  <div class="field__icon"><img class="field__pic" src="img/user.svg" alt=""></div>
+                  <input class="field__input" type="text" name="name" placeholder="Name">
                 </div>
               </div>
               <div class="popup__field field">
                 <div class="field__label">Email</div>
                 <div class="field__wrap">
-                  <div class="field__icon"><img class="field__pic" src="img/sending-mail.svg" alt=""></div><input class="field__input" type="email" name="email" placeholder="Email address">
+                  <div class="field__icon"><img class="field__pic" src="img/sending-mail.svg" alt=""></div>
+                  <input class="field__input" type="email" name="email" placeholder="Email address">
                 </div>
               </div>
               <div class="popup__field field field_textarea">
                 <div class="field__label">Message</div>
                 <div class="field__wrap">
-                  <div class="field__icon"><img class="field__pic" src="img/message.svg" alt=""></div><textarea class="field__textarea" name="Message" placeholder="Message"></textarea>
+                  <div class="field__icon"><img class="field__pic" src="img/message.svg" alt=""></div>
+                  <textarea class="field__textarea" name="Message" placeholder="Message"></textarea>
                 </div>
-              </div><button class="popup__btn btn btn_purple" type="submit">Send now</button>
+              </div>
+              <button class="popup__btn btn btn_purple" type="submit">Send now</button>
             </form>
             <div class="popup__circles">
               <div class="popup__circle"></div>

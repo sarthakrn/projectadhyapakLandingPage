@@ -1,16 +1,16 @@
-var gulp        = require('gulp');
-var plumber     = require('gulp-plumber');
-var svgmin      = require('gulp-svgmin');
-var svgStore    = require('gulp-svgstore');
-var rename      = require('gulp-rename');
-var cheerio     = require('gulp-cheerio');
-var through2    = require('through2');
-var consolidate = require('gulp-consolidate');
-var config      = require('../../config');
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const svgmin = require('gulp-svgmin');
+const svgStore = require('gulp-svgstore');
+const rename = require('gulp-rename');
+const cheerio = require('gulp-cheerio');
+const through2 = require('through2');
+const consolidate = require('gulp-consolidate');
+const config = require('../../config');
 
-gulp.task('sprite:svg', function() {
+function spriteSvgTask() {
     return gulp
-        .src(config.src.iconsSvg + '/*.svg')
+        .src(`${config.src.iconsSvg}/*.svg`)
         .pipe(plumber({
             errorHandler: config.errorHandler
         }))
@@ -19,46 +19,50 @@ gulp.task('sprite:svg', function() {
                 pretty: true
             },
             plugins: [{
-                removeDesc: true
+                name: 'removeDesc',
+                active: true
             }, {
-                cleanupIDs: true
+                name: 'cleanupIDs',
+                active: true
             }, {
-                mergePaths: false
+                name: 'mergePaths',
+                active: false
             }]
         }))
         .pipe(rename({ prefix: 'icon-' }))
         .pipe(svgStore({ inlineSvg: false }))
         .pipe(through2.obj(function(file, encoding, cb) {
-            var $ = file.cheerio;
-            var data = $('svg > symbol').map(function() {
-                var $this  = $(this);
-                var size   = $this.attr('viewBox').split(' ').splice(2);
-                var name   = $this.attr('id');
-                var ratio  = size[0] / size[1]; // symbol width / symbol height
-                var fill   = $this.find('[fill]:not([fill="currentColor"])').attr('fill');
-                var stroke = $this.find('[stroke]').attr('stroke');
+            const cheerioLib = require('cheerio');
+            const $ = cheerioLib.load(file.contents.toString(), { xmlMode: true });
+            const data = $('svg > symbol').map(function() {
+                const $this = $(this);
+                const viewBox = $this.attr('viewBox');
+                if (!viewBox) return null;
+                const size = viewBox.split(' ').slice(2);
+                const name = $this.attr('id');
+                const ratio = size[0] / size[1]; // symbol width / symbol height
+                const fill = $this.find('[fill]:not([fill="currentColor"])').attr('fill');
+                const stroke = $this.find('[stroke]').attr('stroke');
                 return {
-                    name: name,
+                    name,
                     ratio: +ratio.toFixed(2),
                     fill: fill || 'initial',
                     stroke: stroke || 'initial'
                 };
-            }).get();
+            }).get().filter(Boolean);
             this.push(file);
-            gulp.src(__dirname + '/_sprite-svg.scss')
-                .pipe(consolidate('lodash', {
-                    symbols: data
-                }))
-                .pipe(gulp.dest(config.src.sassGen));
-            gulp.src(__dirname + '/sprite.html')
-                .pipe(consolidate('lodash', {
-                    symbols: data
-                }))
-                .pipe(gulp.dest(config.src.root));
+            
+            if (data.length > 0) {
+                gulp.src(`${__dirname}/_sprite-svg.scss`)
+                    .pipe(consolidate('lodash', {
+                        symbols: data
+                    }))
+                    .pipe(gulp.dest(config.src.sassGen));
+            }
             cb();
         }))
         .pipe(cheerio({
-            run: function($, file) {
+            run($, file) {
                 $('[fill]:not([fill="currentColor"])').removeAttr('fill');
                 $('[stroke]').removeAttr('stroke');
             },
@@ -66,8 +70,13 @@ gulp.task('sprite:svg', function() {
         }))
         .pipe(rename({ basename: 'sprite' }))
         .pipe(gulp.dest(config.dest.img));
-});
+}
 
-gulp.task('sprite:svg:watch', function() {
-    gulp.watch(config.src.iconsSvg + '/*.svg', ['sprite:svg']);
-});
+function spriteSvgWatch() {
+    gulp.watch(`${config.src.iconsSvg}/*.svg`, spriteSvgTask);
+}
+
+gulp.task('sprite:svg', spriteSvgTask);
+gulp.task('sprite:svg:watch', spriteSvgWatch);
+
+module.exports = { spriteSvgTask, spriteSvgWatch };

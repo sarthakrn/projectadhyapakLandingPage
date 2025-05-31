@@ -1,57 +1,59 @@
-var util = require('gulp-util');
+const path = require('path');
+const colors = require('ansi-colors');
 
-var production = util.env.production || util.env.prod || false;
-var destPath = 'build';
+// Parse command line arguments for production flag
+const production = process.argv.includes('--production') || process.argv.includes('--prod') || false;
+const destPath = 'build';
 
-var config = {
-    env       : 'development',
-    production: production,
+const config = {
+    env: 'development',
+    production,
 
     src: {
-        root         : 'src',
-        templates    : 'src/templates',
+        root: 'src',
+        templates: 'src/templates',
         templatesData: 'src/templates/data',
-        sass         : 'src/sass',
+        sass: 'src/sass',
         // path for sass files that will be generated automatically via some of tasks
-        sassGen      : 'src/sass/generated',
-        js           : 'src/js',
-        img          : 'src/img',
-        svg          : 'src/img/svg',
-        icons        : 'src/icons',
+        sassGen: 'src/sass/generated',
+        js: 'src/js',
+        img: 'src/img',
+        svg: 'src/img/svg',
+        icons: 'src/icons',
         // path to png sources for sprite:png task
-        iconsPng     : 'src/icons',
+        iconsPng: 'src/icons',
         // path to svg sources for sprite:svg task
-        iconsSvg     : 'src/icons',
+        iconsSvg: 'src/icons',
         // path to svg sources for iconfont task
-        iconsFont    : 'src/icons',
-        fonts        : 'src/fonts',
-        lib          : 'src/lib'
+        iconsFont: 'src/icons',
+        fonts: 'src/fonts',
+        lib: 'src/lib',
     },
     dest: {
-        root : destPath,
-        html : destPath,
-        css  : destPath + '/css',
-        js   : destPath + '/js',
-        img  : destPath + '/img',
-        fonts: destPath + '/css/fonts',
-        lib  : destPath + '/lib'
+        root: destPath,
+        html: destPath,
+        css: path.join(destPath, 'css'),
+        js: path.join(destPath, 'js'),
+        img: path.join(destPath, 'img'),
+        fonts: path.join(destPath, 'css', 'fonts'),
+        lib: path.join(destPath, 'lib'),
     },
 
-    setEnv: function(env) {
+    setEnv(env) {
         if (typeof env !== 'string') return;
         this.env = env;
         this.production = env === 'production';
         process.env.NODE_ENV = env;
     },
 
-    logEnv: function() {
-        util.log(
+    logEnv() {
+        console.log(
             'Environment:',
-            util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' ')
+            colors.white.bgRed(` ${process.env.NODE_ENV} `)
         );
     },
 
-    errorHandler: require('./util/handle-errors')
+    errorHandler: require('./util/handle-errors'),
 };
 
 config.setEnv(production ? 'production' : 'development');
