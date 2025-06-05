@@ -1,0 +1,58 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order"
+  ],
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": 2,
+    "string-quotes": "single",
+    "no-duplicate-selectors": true,
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "color-named": "never",
+    "selector-max-compound-selectors": 4,
+    "selector-max-id": 0,
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-block-single-line-max-declarations": 1,
+    "declaration-block-semicolon-space-before": "never",
+    "declaration-block-semicolon-newline-after": "always",
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-property-value-no-unknown": true,
+    "block-opening-brace-space-before": "always",
+    "selector-attribute-quotes": "always",
+    "selector-class-pattern": "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
+    "custom-property-pattern": "^[a-z]([a-z0-9-]+)*$",
+    "keyframes-name-pattern": "^[a-z]([a-z0-9-]+)*$",
+    "max-nesting-depth": 3,
+    "no-descending-specificity": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/dollar-variable-pattern": "^[a-z]([a-z0-9-]+)*$",
+    "scss/selector-no-redundant-nesting-selector": true,
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["appearance"]
+      }
+    ],
+    "at-rule-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "function-url-quotes": "always",
+    "font-weight-notation": "numeric",
+    "comment-word-disallowed-list": [
+      ["todo", "fixme"],
+      {
+        "severity": "warning"
+      }
+    ]
+  },
+  "ignoreFiles": [
+    "build/**/*",
+    "node_modules/**/*",
+    "src/sass/generated/**/*"
+  ]
+}
