@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "scripts": {
     "ghpages": "git subtree push --prefix build origin gh-pages",
-    "build": "node ./node_modules/gulp/bin/gulp.js build --production",
+    "build": "npx --yes gulp build --production",
     "start": "npx gulp",
     "precommit": "lint-staged",
     "lint": "eslint --ignore-pattern 'src/js/lib/' --cache src/js/",
