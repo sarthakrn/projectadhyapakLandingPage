@@ -50,7 +50,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-svgmin": "^4.1.0",
     "gulp-svgstore": "^9.0.0",
-    "htmlhint": "^1.1.4",
+    "htmlhint": "1.1.4",
     "husky": "^8.0.3",
     "jquery": "^3.7.1",
     "lint-staged": "^15.2.0",
@@ -69,7 +69,7 @@
     "through2": "^4.0.2"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=18.20.0",
     "npm": ">=9.0.0"
   }
 }
